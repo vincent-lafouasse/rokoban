@@ -52,6 +52,7 @@ fn log_boxes(query: Query<&Position, With<Box>>) {
 
 fn main() {
     App::new()
+        .add_plugins(DefaultPlugins)
         .add_systems(Startup, init_world)
         .add_systems(
             // if not chained, those systems are run in parallel
