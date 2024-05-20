@@ -51,6 +51,7 @@ fn main() {
     App::new()
         .add_systems(Startup, init_world)
         .add_systems(
+            // if not chained, those systems are run in parallel
             Update,
             (say_hi, (log_player, move_player_left, log_player).chain()),
         )
