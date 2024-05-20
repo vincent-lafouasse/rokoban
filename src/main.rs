@@ -18,6 +18,7 @@ struct Box;
 struct Hole;
 
 fn init_world(mut commands: Commands) {
+    // spawn entities
     commands.spawn((Player, Position { x: 0, y: 0 }));
     commands.spawn((Box, Position { x: 1, y: 0 }));
     commands.spawn((Box, Position { x: 4, y: 0 }));
