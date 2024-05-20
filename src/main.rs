@@ -37,15 +37,16 @@ fn log_player(query: Query<&Position, With<Player>>) {
     }
 }
 
-fn log_boxes(query: Query<&Position, With<Box>>) {
-    for pos in &query {
-        println!("there is a box at the position x:{} y:{}", pos.x, pos.y);
-    }
-}
-
+// same but mutably
 fn move_player_left(mut query: Query<&mut Position, With<Player>>) {
     for mut pos in &mut query {
         pos.x += 1;
+    }
+}
+
+fn log_boxes(query: Query<&Position, With<Box>>) {
+    for pos in &query {
+        println!("there is a box at the position x:{} y:{}", pos.x, pos.y);
     }
 }
 
