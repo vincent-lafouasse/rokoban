@@ -29,6 +29,8 @@ fn say_hi() {
     println!("hi");
 }
 
+// reads as "iterate over every `Position` component for Entities that also have a `Player`
+// component"
 fn log_player(query: Query<&Position, With<Player>>) {
     for pos in &query {
         println!("the player is at the position x:{} y:{}", pos.x, pos.y);
