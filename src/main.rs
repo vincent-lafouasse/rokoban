@@ -41,9 +41,18 @@ fn log_boxes(query: Query<&Position, With<Box>>) {
     }
 }
 
+fn move_player_left(mut query: Query<&mut Position, With<Player>>) {
+    for mut pos in &mut query {
+        pos.x += 1;
+    }
+}
+
 fn main() {
     App::new()
         .add_systems(Startup, init_world)
-        .add_systems(Update, (say_hi, log_player, log_boxes))
+        .add_systems(
+            Update,
+            (say_hi, (log_player, move_player_left, log_player).chain()),
+        )
         .run();
 }
