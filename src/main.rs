@@ -4,8 +4,8 @@ use bevy::prelude::*;
 
 #[derive(Component)]
 struct Position {
-    x: f32,
-    y: f32,
+    x: i32,
+    y: i32,
 }
 
 #[derive(Component)]
@@ -25,7 +25,13 @@ struct Hole {
 
 fn init_world(mut commands: Commands) {
     commands.spawn(Player {
-        pos: Position { x: 0.0, y: 0.0 },
+        pos: Position { x: 0, y: 0 },
+    });
+    commands.spawn(Box {
+        pos: Position { x: 1, y: 0 },
+    });
+    commands.spawn(Hole {
+        pos: Position { x: 2, y: 0 },
     });
 }
 
