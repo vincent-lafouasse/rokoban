@@ -50,14 +50,18 @@ fn log_boxes(query: Query<&Position, With<Box>>) {
     }
 }
 
-fn main() {
-    App::new()
-        .add_plugins(DefaultPlugins)
-        .add_systems(Startup, init_world)
-        .add_systems(
+struct HelloPlugin;
+
+impl Plugin for HelloPlugin {
+    fn build(&self, app: &mut App) {
+        app.add_systems(Startup, init_world).add_systems(
             // if not chained, those systems are run in parallel
             Update,
             (say_hi, (log_player, move_player_left, log_player).chain()),
-        )
-        .run();
+        );
+    }
+}
+
+fn main() {
+    App::new().add_plugins((DefaultPlugins, HelloPlugin)).run();
 }
