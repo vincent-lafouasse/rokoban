@@ -12,23 +12,15 @@ struct Position {
 struct Player;
 
 #[derive(Component)]
-struct Box {
-    pos: Position,
-}
+struct Box;
 
 #[derive(Component)]
-struct Hole {
-    pos: Position,
-}
+struct Hole;
 
 fn init_world(mut commands: Commands) {
     commands.spawn((Player, Position { x: 0, y: 0 }));
-    commands.spawn(Box {
-        pos: Position { x: 1, y: 0 },
-    });
-    commands.spawn(Hole {
-        pos: Position { x: 2, y: 0 },
-    });
+    commands.spawn((Box, Position { x: 1, y: 0 }));
+    commands.spawn((Hole, Position { x: 2, y: 0 }));
 }
 
 fn say_hi() {
